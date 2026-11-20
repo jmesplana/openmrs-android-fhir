@@ -39,7 +39,21 @@
 
     <audit max-actions="500" />
 
-    <!-- No <form-sections>: every questionnaire the server offers is listed alphabetically under
-         a single "All forms" section. Replace this with MDS-aligned sections once the distro
-         defines its encounter types and their codes. -->
+    <!-- Forms are grouped by the encounter-type code their questionnaire declares. A code with
+         no questionnaire is skipped, so the sections below can name encounter types whose forms
+         do not exist yet. -->
+    <form-sections>
+        <section name="Clinical">
+            <form code="emt.consultation" />
+            <form code="emt.triage" />
+        </section>
+        <section name="Procedures and outcomes">
+            <form code="emt.procedure" />
+            <form code="emt.delivery" />
+            <form code="emt.outcome" />
+        </section>
+        <section name="Immediate reporting">
+            <form code="emt.immediate" />
+        </section>
+    </form-sections>
 </app-config>
