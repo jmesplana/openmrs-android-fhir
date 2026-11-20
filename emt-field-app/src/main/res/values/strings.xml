@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Overrides core's app_name so the launcher and the app bar show this app's own name. -->
+<resources>
+    <string name="app_name" translatable="false">EMT Field EMR</string>
+</resources>

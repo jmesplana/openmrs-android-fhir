@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--
+  EMT Field EMR mobile app configuration.
+
+  Server: the Android emulator reaches this machine's host at 10.0.2.2. The local EMT stack
+  publishes the gateway on port 80, so no port is given here. A physical device on the same
+  network needs this machine's LAN address instead (and that host added to
+  core/src/main/res/xml/network_security_config.xml, which only permits cleartext to 10.0.2.2
+  and 127.0.0.1).
+
+  Auth: the local reference-application stack has no Keycloak, so single sign-on is not offered.
+  Basic authentication uses the OpenMRS username and password.
+-->
+<app-config>
+    <server url="http://10.0.2.2/openmrs" />
+
+    <auth method="basic" guest-mode="false" />
+
+    <sync
+        location-tag="Login Location"
+        filter-patient-lists-by-location="true"
+        live-mode-default="false"
+    />
+
+    <patients
+        registration-form="new-patient-registration-paginated"
+        fetch-identifiers="true"
+    />
+
+    <!-- Group-session concepts are deliberately left unset: a concept UUID the server does not
+         have makes it refuse the whole encounter. Set these once the EMT concept dictionary
+         defines them. -->
+
+    <server-compatibility enabled="true" />
+
+    <support email="johnm.esplana@gmail.com" />
+
+    <diagnostics password="emt-field-diag" />
+
+    <audit max-actions="500" />
+
+    <!-- No <form-sections>: every questionnaire the server offers is listed alphabetically under
+         a single "All forms" section. Replace this with MDS-aligned sections once the distro
+         defines its encounter types and their codes. -->
+</app-config>

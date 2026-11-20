@@ -5,3 +5,5 @@ include(":app")
 include("core")
 
 include(":dev3-app")
+
+include(":emt-field-app")
