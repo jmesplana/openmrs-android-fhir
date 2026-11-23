@@ -16,9 +16,14 @@
 
     <auth method="basic" guest-mode="false" />
 
+    <!-- filter-patient-lists-by-location is false: the app would otherwise ask the server for
+         Group?location=<the location signed in at>, and a stock fhir2 module has no notion of a
+         cohort's location. Cohorts created in the OpenMRS UI have none, so every list would be
+         filtered out and the screen would report that it could not load them. Set it back to
+         true only on a server that does attach locations to cohorts. -->
     <sync
         location-tag="Login Location"
-        filter-patient-lists-by-location="true"
+        filter-patient-lists-by-location="false"
         live-mode-default="false"
     />
 
